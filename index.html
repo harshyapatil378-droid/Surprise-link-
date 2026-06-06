@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Surprise for Divv ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        .container {
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 400px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: cardFloat 3s ease-in-out infinite, cardReveal 0.8s ease-out;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            transition: all 0.1s ease-out;
+        }
+
+        @keyframes cardReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotateY(90deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotateY(0deg);
+            }
+        }
+
+        @keyframes cardFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.3), transparent);
+            pointer-events: none;
+        }
+
+        .heart {
+            font-size: 50px;
+            text-align: center;
+            animation: heartBeat 1.2s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+            75% {
+                transform: scale(1.15);
+            }
+        }
+
+        h1 {
+            color: #fff;
+            text-align: center;
+            font-size: 28px;
+            margin: 20px 0;
+            animation: titleGlow 2s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(245, 87, 108, 0.6);
+            }
+        }
+
+        p {
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            animation: textFadeIn 1.2s ease-out;
+        }
+
+        @keyframes textFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sparkle animation */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 10px #fff;
+        }
+
+        .sparkle1 { animation: sparkleFloat 3s ease-in-out infinite; }
+        .sparkle2 { animation: sparkleFloat 3.5s ease-in-out infinite 0.5s; }
+        .sparkle3 { animation: sparkleFloat 4s ease-in-out infinite 1s; }
+        .sparkle4 { animation: sparkleFloat 3.2s ease-in-out infinite 1.5s; }
+
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) scale(0);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--x), var(--y)) scale(0);
+            }
+        }
+
+        /* Confetti animation */
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .confetti-piece {
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .pulse-text {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .card {
+                width: 90%;
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .heart {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card" id="card">
+            <div class="sparkle sparkle1"></div>
+            <div class="sparkle sparkle2"></div>
+            <div class="sparkle sparkle3"></div>
+            <div class="sparkle sparkle4"></div>
+
+            <div class="heart">❤️</div>
+
+            <h1>✨ Surprise for Divv ✨</h1>
+
+            <p>
+                Hey Divv 🫡💗🥰
+                <br><br>
+                Just wanted to wish you...
+                <br><br>
+
+                🌟 ALL THE BEST FOR YOUR MATHS-II PAPER! 🌟
+                <br><br>
+
+                Stay calm, stay confident, and trust your preparation. 📚✨
+                Every formula will come to your mind at the right time, and you'll do amazing!
+                <br><br>
+
+                Believe in yourself because you're stronger and smarter than you think. 💖
+                <br><br>
+
+                🍀 Best of luck, Divv! 🍀
+                <br><br>
+
+                Go and rock your exam! 🚀🔥
+                <br><br>
+
+                <span class="pulse-text">👉 Click the card for confetti! 👈</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Create sparkles
+        const card = document.getElementById('card');
+        const sparkles = document.querySelectorAll('.sparkle');
+
+        sparkles.forEach((sparkle, index) => {
+            const x = Math.random() * 100 - 50;
+            const y = Math.random() * -100 - 50;
+            sparkle.style.setProperty('--x', `${x}px`);
+            sparkle.style.setProperty('--y', `${y}px`);
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+        });
+
+        // Create confetti on page load
+        function createConfetti() {
+            const confettiPieces = ['🎉', '✨', '🌟', '💖', '🍀', '🚀', '📚', '🔥', '💗', '🫡'];
+            const confettiContainer = document.body;
+
+            for (let i = 0; i < 40; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.textContent = confettiPieces[Math.floor(Math.random() * confettiPieces.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                confetti.style.opacity = Math.random() * 0.7 + 0.3;
+                
+                const duration = Math.random() * 2 + 2.5;
+                confetti.style.animation = `fall ${duration}s linear`;
+                
+                confettiContainer.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), duration * 1000);
+            }
+        }
+
+        // Trigger confetti on click
+        card.addEventListener('click', () => {
+            createConfetti();
+            // Bounce effect
+            card.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                card.style.transform = 'scale(1)';
+            }, 100);
+        });
+
+        // Initial confetti burst
+        setTimeout(createConfetti, 1000);
+
+        // Continuous confetti every 5 seconds
+        setInterval(createConfetti, 5000);
+
+        // Mouse follow effect
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            const cardRect = card.getBoundingClientRect();
+            
+            const rotateX = (mouseY - cardRect.top - cardRect.height / 2) / 15;
+            const rotateY = (cardRect.left + cardRect.width / 2 - mouseX) / 15;
+            
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        // Reset transform when mouse leaves
+        document.addEventListener('mouseleave', () => {
+            card.style.transform = 'rotateX(0) rotateY(0)';
+        });
+
+        // Keyboard shortcut for confetti (Space bar)
+        document.addEventListener('keypress', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                createConfetti();
+            }
+        });
+    </script>
+</body>
+</html>
